@@ -7,11 +7,16 @@ using Firebase.Auth;
 using Firebase.Unity.Editor;
 
 public class Login : MonoBehaviour {
-	Text email;
-	Text password;
-	Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+	public Text email;
+	public Text password;
+	public Text dummy;
+	public Firebase.Auth.FirebaseAuth auth;
 
-	void SignIn(){
+	void Start() {
+		auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+	}
+
+	public void SignIn() {
 		auth.SignInWithEmailAndPasswordAsync (email.text, password.text).ContinueWith (task => {
 			if (task.IsCanceled) {
 				Debug.LogError ("SignInWithEmailAndPasswordAsync was canceled.");
@@ -25,6 +30,7 @@ public class Login : MonoBehaviour {
 			Firebase.Auth.FirebaseUser newUser = task.Result;
 			Debug.LogFormat ("User signed in successfully: {0} ({1})",
 				newUser.DisplayName, newUser.UserId);
+			dummy.text = newUser.Email;
 		});
 	}
 }
