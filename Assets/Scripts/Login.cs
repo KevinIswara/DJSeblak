@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Firebase;
 using Firebase.Auth;
@@ -31,6 +32,7 @@ public class Login : MonoBehaviour {
 			Debug.LogFormat ("User signed in successfully: {0} ({1})",
 				newUser.DisplayName, newUser.UserId);
 			dummy.text = newUser.Email;
+			SceneManager.LoadScene(1);
 		});
 	}
 }
