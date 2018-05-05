@@ -8,7 +8,6 @@ public class LoadScene : MonoBehaviour {
     
     public void LoadByIndex(int index)
     {
-        SceneManager.LoadScene(index);
+		SceneManager.LoadScene(index, LoadSceneMode.Single);
     }
-
 }

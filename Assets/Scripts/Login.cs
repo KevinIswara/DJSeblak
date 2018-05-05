@@ -10,7 +10,6 @@ using Firebase.Unity.Editor;
 public class Login : MonoBehaviour {
 	public Text email;
 	public Text password;
-	public Text dummy;
 	public Firebase.Auth.FirebaseAuth auth;
 
 	void Start() {
@@ -31,7 +30,6 @@ public class Login : MonoBehaviour {
 			Firebase.Auth.FirebaseUser newUser = task.Result;
 			Debug.LogFormat ("User signed in successfully: {0} ({1})",
 				newUser.DisplayName, newUser.UserId);
-			dummy.text = newUser.Email;
 			SceneManager.LoadScene(1);
 		});
 	}
