@@ -10,6 +10,7 @@ using Firebase.Unity.Editor;
 public class Register : MonoBehaviour {
 	public Text email;
 	public Text password;
+	public Text dummy;
 	public Firebase.Auth.FirebaseAuth auth;
 
 	// Use this for initialization
@@ -37,7 +38,9 @@ public class Register : MonoBehaviour {
 			Firebase.Auth.FirebaseUser newUser = task.Result;
 			Debug.LogFormat("Firebase user created successfully: {0} ({1})",
 				newUser.DisplayName, newUser.UserId);
-			SceneManager.LoadScene(1);
+			PlayerPrefs.SetString("user_id", newUser.UserId);
+			dummy.text = PlayerPrefs.GetString("user_id");
+			SceneManager.LoadScene(6);
 		});
 	}
 }
